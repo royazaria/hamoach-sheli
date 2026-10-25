@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>המוח שלך — התקנה</title>
+<meta name="description" content="איך מכניסים את המוח למחשב, מתייעצים איתו ומגדלים אותו.">
+<meta property="og:title" content="המוח שלך הגיע">
+<meta property="og:description" content="ככה מכניסים אותו למחשב, מתייעצים איתו ומגדלים אותו.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f2ea; --card:#fffdf9; --ink:#1f2328; --muted:#5f6670; --line:#e4ddd0;
+  --accent:#2e6b5e; --accent-ink:#ffffff; --accent-soft:#e3efe9;
+  --code-bg:#1f2328; --code-ink:#e6f0ec; --warn:#8a520f; --warn-soft:#fbf0dd;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Heebo",Arial,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:"Frank Ruhl Libre","Heebo",serif;line-height:1.2;margin:0}
+h1{font-size:clamp(34px,7vw,52px);font-weight:700}
+h2{font-size:clamp(24px,4.6vw,30px);font-weight:700;margin-bottom:10px}
+h3{font-size:19px;font-family:"Heebo";font-weight:700;margin-bottom:4px}
+p{margin:0 0 12px}
+strong{font-weight:700}
+a{color:var(--accent)}
+bdi.path,code{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.86em;background:var(--accent-soft);padding:1px 6px;border-radius:5px;color:var(--ink);unicode-bidi:isolate}
+.muted{color:var(--muted)}
+/* hero */
+.hero{padding:56px 0 26px}
+.eyebrow{display:inline-block;font-size:14px;letter-spacing:.4px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 14px;margin-bottom:18px;font-weight:500}
+.lead{font-size:clamp(18px,3.4vw,21px);color:var(--muted);font-weight:300;margin-top:14px;max-width:620px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.toc a{font-size:14px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 13px}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+/* banner */
+.banner{display:none;margin:0 0 18px;background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:14px 18px;font-weight:500}
+.banner.show{display:block}
+/* cards */
+section{padding:22px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.need ul{margin:6px 0 0;padding:0;list-style:none}
+.need li{padding:6px 0;border-top:1px dashed var(--line)}
+.need li:first-child{border-top:0}
+.step-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.num{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-size:19px}
+.step-head h2{margin:0}
+ol.plain{margin:0 0 12px;padding-inline-start:22px}
+ol.plain li{margin-bottom:6px}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin-top:12px;font-size:16px}
+.note.warn{background:var(--warn-soft);color:var(--warn)}
+/* tabs + code */
+.tabs{display:flex;gap:6px;margin:14px 0 0}
+.tab{font:inherit;font-size:15px;font-weight:500;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px 10px 0 0;padding:7px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--code-bg);color:var(--code-ink);border-color:var(--code-bg)}
+.pane{background:var(--code-bg);color:var(--code-ink);border-radius:0 12px 12px 12px;padding:16px}
+.pane p{font-size:15.5px;color:#c9d6d1;margin-bottom:12px}
+.pane p strong{color:#fff}
+.cmd{direction:ltr;text-align:left;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:14px;background:#0f1215;border-radius:9px;padding:12px 14px;white-space:pre-wrap;word-break:break-all;color:#bfe6d6;margin:0}
+.copy{font:inherit;font-size:15px;font-weight:500;margin-top:10px;border:0;border-radius:9px;padding:8px 18px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.copy:hover{filter:brightness(1.08)}
+.msg{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0 0;white-space:pre-wrap;font-size:16px}
+/* prompts */
+.prompts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.prompt{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.prompt .t{font-weight:500}
+.prompt .k{font-size:14px;color:var(--muted)}
+.prompt .copy{align-self:flex-start;margin-top:0;padding:5px 14px;font-size:14px}
+.grow{display:grid;gap:12px;margin-top:14px}
+.grow .prompt{flex-direction:row;align-items:flex-start}
+.grow .ic{font-size:26px;line-height:1.2}
+.grow .body{flex:1}
+/* faq */
+details{border-top:1px solid var(--line);padding:12px 0}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:500;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-block;width:22px;color:var(--accent);font-weight:700}
+details[open] summary::before{content:"–"}
+details p{margin:8px 22px 0 0;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:15px;text-align:center}
+@media (max-width:620px){
+  body{font-size:16px}
+  .hero{padding-top:36px}
+  .card{padding:20px 16px;border-radius:16px}
+  .prompts{grid-template-columns:1fr}
+  .num{width:36px;height:36px;font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">🧠 המוח שלך</span>
+  <h1>המוח שלך הגיע.</h1>
+  <p class="lead">ככה מכניסים אותו למחשב, מתייעצים איתו ומגדלים אותו. כמה דקות, פעם אחת, ולא צריך להבין במחשבים.</p>
+  <nav class="toc" aria-label="תוכן">
+    <a href="#step1">1 · שומרים את הקובץ</a>
+    <a href="#step2">2 · מדביקים שורה</a>
+    <a href="#start">3 · מתחילים</a>
+    <a href="#consult">מתייעצים</a>
+    <a href="#grow">מגדלים</a>
+    <a href="#update">גרסה חדשה</a>
+    <a href="#help">משהו לא עבד?</a>
+  </nav>
+</header>
+
+<section class="need">
+  <div class="card">
+    <h2>לפני שמתחילים</h2>
+    <ul>
+      <li>💻 <strong>מחשב</strong> עם Windows או Mac. בטלפון זה לא עובד, אז את הדף הזה פותחים במחשב.</li>
+      <li>✨ <strong>מנוי Claude בתשלום</strong> (Pro, בערך 20$ לחודש). נרשמים ב-<a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>. בלי מנוי, Claude Code לא עובד.</li>
+      <li>📦 <strong>הקובץ של המוח</strong> שקיבלת. זה קובץ ZIP, ובשם שלו מופיעה המילה "המוח".</li>
+    </ul>
+  </div>
+</section>
+
+<section id="step1">
+  <div class="card">
+    <div class="step-head"><span class="num">1</span><h2>שומרים את הקובץ</h2></div>
+    <p>שומרים את קובץ המוח בתיקיית <strong>ההורדות</strong> (Downloads), <strong>בלי לפתוח אותו ובלי להזיז אותו</strong>.</p>
+    <ol class="plain">
+      <li><strong>קיבלת בוואטסאפ?</strong> פותחים את הוואטסאפ במחשב (האפליקציה או web.whatsapp.com) ולוחצים על הקובץ. הוא נשמר לבד בהורדות.</li>
+      <li><strong>קיבלת במייל או בדרייב?</strong> לוחצים "הורדה". גם ככה הוא נשמר בהורדות.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="step2">
+  <div class="card">
+    <div class="step-head"><span class="num">2</span><h2>מדביקים שורה אחת</h2></div>
+    <p>השורה עושה הכל לבד: מתקינה את <strong>Obsidian</strong> (התוכנה שמציגה את המוח) ואת <strong>Claude</strong> (עם Claude Code), ופורשת את המוח שלך לתיקייה בשם <strong>המוח שלי</strong>. מה שכבר מותקן אצלך היא מדלגת עליו.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tab-win" role="tab" aria-selected="true">Windows</button>
+      <button class="tab" id="tab-mac" role="tab" aria-selected="false">Mac</button>
+    </div>
+    <div class="pane" id="pane-win" role="tabpanel">
+      <p>לוחצים על מקש <strong>Windows</strong>, כותבים <strong>cmd</strong> ולוחצים Enter. מעתיקים את השורה, מדביקים בחלון השחור (קליק ימני) ולוחצים Enter. מחכים עד שכתוב <strong>All set</strong>.</p>
+      <pre class="cmd" id="cmd-win">powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://royazaria.github.io/hamoach-sheli/install.ps1 | iex"</pre>
+      <button class="copy" data-copy="cmd-win">העתקת השורה</button>
+      <p style="margin:12px 0 0">אם קופץ חלון ששואל "לאפשר לאפליקציה לבצע שינויים?", לוחצים <strong>כן</strong>.</p>
+    </div>
+    <div class="pane" id="pane-mac" role="tabpanel" hidden>
+      <p>לוחצים <strong>Cmd + רווח</strong>, כותבים <strong>Terminal</strong> ולוחצים Enter. מעתיקים את השורה, מדביקים (Cmd + V) ולוחצים Enter. מחכים עד שכתוב <strong>All set</strong>.</p>
+      <pre class="cmd" id="cmd-mac">curl -fsSL https://royazaria.github.io/hamoach-sheli/install.sh | bash</pre>
+      <button class="copy" data-copy="cmd-mac">העתקת השורה</button>
+    </div>
+    <p class="muted" style="margin-top:12px">בסוף נפתחים לבד Obsidian עם המוח שלך, והדף הזה בשלב 3.</p>
+  </div>
+</section>
+
+<section id="start">
+  <div class="banner" id="done-banner">✓ ההתקנה הסתיימה. עכשיו שלב 3, ואת מוכנה.</div>
+  <div class="card">
+    <div class="step-head"><span class="num">3</span><h2>מתחילים לעבוד</h2></div>
+    <ol class="plain">
+      <li>פותחים את <strong>Claude</strong> ונכנסים לחשבון (רק בפעם הראשונה).</li>
+      <li>לוחצים על הלשונית <strong>Code</strong> ⇐ <strong><bdi>+ New session</bdi></strong> ⇐ בוחרים את התיקייה <strong>המוח שלי</strong>.</li>
+      <li>שולחים לו את ההודעה הראשונה:</li>
+    </ol>
+    <div class="msg" id="first-msg">תכיר את המוח שלי: תקרא אותו, ותגיד לי בחמש שורות מה אתה יודע על העסק שלי ומה הכי חסר לך.</div>
+    <button class="copy" data-copy="first-msg">העתקת ההודעה</button>
+    <div class="note"><strong>איפה התיקייה?</strong> בתיקייה הראשית של המשתמש שלך. ב-Windows: <bdi>C:</bdi> ⇐ <bdi>Users</bdi> ⇐ התיקייה עם השם שלך ⇐ <strong>המוח שלי</strong>. ב-Mac: תיקיית הבית (זו עם האייקון של הבית) ⇐ <strong>המוח שלי</strong>.</div>
+    <p class="muted" style="margin-top:12px">ב-Obsidian רואים את המוח עצמו: המפה, האינדקס וכל פריט. כל מה ש-Claude מוסיף מופיע שם מיד. אם Claude מבקש אישור לקרוא או לכתוב קובץ, מאשרים.</p>
+  </div>
+</section>
+
+<section id="consult">
+  <div class="card">
+    <h2>מתייעצים עם המוח</h2>
+    <p>מדברים איתו כמו עם יועץ שמכיר את העסק שלך בעל פה. הוא עונה מתוך המוח, ומראה מאיזה פריט הגיעה כל עובדה. מה שלא כתוב במוח הוא לא ממציא: הוא אומר שזה חסר ומציע להכניס את זה.</p>
+    <div class="prompts">
+      <div class="prompt"><div><div class="t" id="p1">שלוף לי את כל מה שיש במוח על ___</div><div class="k">לפני שיחה, סדנה או החלטה</div></div><button class="copy" data-copy="p1">העתקה</button></div>
+      <div class="prompt"><div><div class="t" id="p2">לקוחה כתבה לי: ___. מה עונים לה?</div><div class="k">תשובה בקול שלך</div></div><button class="copy" data-copy="p2">העתקה</button></div>
+      <div class="prompt"><div><div class="t" id="p3">תכתוב לי פוסט על ___, בקול שלי</div><div class="k">גם ריל, מייל, דף או תסריט</div></div><button class="copy" data-copy="p3">העתקה</button></div>
+      <div class="prompt"><div><div class="t" id="p4">אני מתלבטת אם ___. מה המוח אומר, ומה היית ממליץ?</div><div class="k">התייעצות על החלטה</div></div><button class="copy" data-copy="p4">העתקה</button></div>
+      <div class="prompt"><div><div class="t" id="p5">תבקר את הטקסט הזה: ___</div><div class="k">מה עובד, מה שבור, מה לכתוב במקום</div></div><button class="copy" data-copy="p5">העתקה</button></div>
+      <div class="prompt"><div><div class="t" id="p6">מה המצב? מה פתוח ומה הדבר הבא?</div><div class="k">סדר עדיפויות בשלושה משפטים</div></div><button class="copy" data-copy="p6">העתקה</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="grow">
+  <div class="card">
+    <h2>מגדלים את המוח</h2>
+    <p>המוח מתחיל ממה שכבר יודעים עלייך, וגדל עם כל שיחה. שלוש דרכים להכניס אליו דברים חדשים:</p>
+    <div class="grow">
+      <div class="prompt"><span class="ic">💬</span><div class="body"><h3>מדביקים טקסט</h3><p class="k" style="margin:0 0 8px">כותבים "קלוט את זה:" ומדביקים: תמלול של הודעה קולית, שיחה עם לקוחה, פוסט או עדות. הוא מפרק את זה לפריטים ומחבר למה שכבר יש.</p><span class="t" id="g1">קלוט את זה:</span> <button class="copy" data-copy="g1">העתקה</button></div></div>
+      <div class="prompt"><span class="ic">📂</span><div class="body"><h3>שמים קבצים</h3><p class="k" style="margin:0 0 8px">מסמכים, PDF וצילומי מסך נכנסים לתיקייה <bdi class="path" dir="rtl">_גולמי/חומרים</bdi> שבתוך "המוח שלי". אחר כך כותבים:</p><span class="t" id="g2">קלוט את מה שיש בחומרים</span> <button class="copy" data-copy="g2">העתקה</button></div></div>
+      <div class="prompt"><span class="ic">❓</span><div class="body"><h3>נותנים לו לשאול</h3><p class="k" style="margin:0 0 8px">הוא קורא את כל המוח ושואל 5 שאלות בכל פעם, על מה שעוד חסר לו. עונים בקצרה, בהקלטה מתומללת, או "לא יודעת". כל תשובה נכנסת למוח. כדי לעצור כותבים "די".</p><span class="t" id="g3">תשאל אותי מה חסר לך</span> <button class="copy" data-copy="g3">העתקה</button></div></div>
+    </div>
+    <div class="note">כל מה שנוסף למוח נרשם בקובץ <bdi class="path" dir="rtl">_גולמי/מה הוספתי למוח.md</bdi>. כשתרצי גרסה מעודכנת של המוח, שלחי את הקובץ הזה למי שבנה לך אותו, כדי שהגרסה החדשה תכלול את כל מה שהוספת.</div>
+  </div>
+</section>
+
+<section id="update">
+  <div class="card">
+    <h2>הגיעה גרסה חדשה של המוח</h2>
+    <ol class="plain">
+      <li>שומרים את הקובץ החדש בהורדות, בדיוק כמו בפעם הראשונה.</li>
+      <li>סוגרים את Obsidian ואת Claude.</li>
+      <li>מריצים שוב את <a href="#step2">אותה שורה</a>, ומחכים ל-<strong>All set</strong>.</li>
+      <li>פותחים Claude ⇐ Code ⇐ <bdi>+ New session</bdi> ⇐ המוח שלי.</li>
+    </ol>
+    <div class="note">שום דבר לא נמחק. מה שהוספת בעצמך נשאר במקום. אם הגרסה החדשה מחליפה קובץ ששינית, העותק שלך נשמר קודם בתיקייה <bdi class="path" dir="rtl">_גיבוי</bdi>. אם יש בהורדות כמה קבצים של המוח, השורה לוקחת את החדש ביותר.</div>
+  </div>
+</section>
+
+<section id="help">
+  <div class="card">
+    <h2>משהו לא עבד?</h2>
+    <details><summary>כתוב "No brain file in Downloads"</summary><p>הקובץ לא נמצא בתיקיית ההורדות, או שבשם שלו אין את המילה "המוח". שומרים אותו בהורדות, בלי לפתוח, ומריצים את השורה שוב.</p></details>
+    <details><summary>הופיעה הודעה באדום</summary><p>מצלמים את החלון ושולחים את הצילום למי ששלח לך את המוח.</p></details>
+    <details><summary>החלון השחור כותב שהפקודה לא מוכרת</summary><p>כנראה לא הועתקה כל השורה. לוחצים שוב על "העתקת השורה", מדביקים ולוחצים Enter.</p></details>
+    <details><summary>Obsidian לא מראה את המוח</summary><p>סוגרים את Obsidian ופותחים אותו שוב. אם עדיין לא: Open folder as vault ⇐ בוחרים את התיקייה "המוח שלי".</p></details>
+    <details><summary>Claude לא מוצא את התיקייה</summary><p>ב-<bdi>+ New session</bdi> בוחרים את התיקייה ידנית. ב-Windows: <bdi>C:</bdi> ⇐ <bdi>Users</bdi> ⇐ התיקייה עם השם שלך ⇐ המוח שלי. ב-Mac: תיקיית הבית ⇐ המוח שלי.</p></details>
+    <details><summary>Claude אומר שצריך מנוי</summary><p>Claude Code עובד רק במנוי בתשלום (Pro ומעלה). נכנסים ל-claude.ai ⇐ Upgrade.</p></details>
+    <details><summary>הקבצים שלי פרטיים?</summary><p>המוח יושב אצלך במחשב, בתיקייה "המוח שלי". Claude קורא ממנו רק כשאת עובדת איתו.</p></details>
+  </div>
+</section>
+
+<footer>המוח שלך · יושב אצלך במחשב, בתיקייה "המוח שלי"</footer>
+</div>
+
+<script>
+(function () {
+  var tabs = { win: document.getElementById("tab-win"), mac: document.getElementById("tab-mac") };
+  var panes = { win: document.getElementById("pane-win"), mac: document.getElementById("pane-mac") };
+  function show(k) { ["win", "mac"].forEach(function (x) { tabs[x].setAttribute("aria-selected", x === k ? "true" : "false"); panes[x].hidden = x !== k; }); }
+  tabs.win.addEventListener("click", function () { show("win"); });
+  tabs.mac.addEventListener("click", function () { show("mac"); });
+  if (/Mac/i.test(navigator.platform || navigator.userAgent) && !/iPhone|iPad/i.test(navigator.userAgent)) show("mac");
+  if (/[?&]installed=1/.test(location.search)) document.getElementById("done-banner").classList.add("show");
+})();
+function fallbackCopy(t) {
+  var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta);
+}
+function copyText(t, done) {
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function () { fallbackCopy(t); done(); }); }
+  else { fallbackCopy(t); done(); }
+}
+document.querySelectorAll("[data-copy]").forEach(function (b) {
+  b.addEventListener("click", function () {
+    copyText(document.getElementById(b.getAttribute("data-copy")).textContent.trim(), function () {
+      var o = b.textContent; b.textContent = "הועתק ✓"; setTimeout(function () { b.textContent = o; }, 1800);
+    });
+  });
+});
+</script>
+</body>
+</html>
